@@ -11,21 +11,35 @@ The function should return an uncompressed version of the string where each 'cha
  */
 
 const uncompress = (s) => {
-    let str = ''
+    // todo
+    
+    let numbers = '0123456789'
     let i = 0;
     let j = 0;
-    while (j < s.length) {
-      if (Number(s[j])) {
-        j += 1;
-      } else {
-        const num = Number(s.slice(i, j));
-        for (let count = 0; count < num; count += 1) {
-          str += s[j]
-        }
-        j += 1;
-        i = j;
-      }
-    }
-    return str;
+    let result = []
     
+    while(j < s.length){
+      if(numbers.includes(s[j])){
+        j++
+      }else{
+        let num = Number(s.slice(i, j))
+        for(let count = 0; count < num; count++){
+          result.push(s[j])
+        }
+        j++
+        i = j
+      }   
+      
+    }
+    
+    
+    return result.join('')
   };
+
+ /**
+  * 
+  * n = number of groups
+    m = max num found in any group
+    Time: O(n*m)
+    Space: O(n*m)
+  */
